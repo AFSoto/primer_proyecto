@@ -1,6 +1,6 @@
-<?php include_once './redireccion.php'; ?>
-<?php include_once './includes/cabecera.php'; ?>
-<?php include_once './includes/lateral.php'; ?>
+<?php include_once __DIR__ . '/../acciones/redireccion.php'; ?>
+<?php include_once __DIR__ . '/../includes/cabecera.php'; ?>
+<?php include_once __DIR__ . '/../includes/lateral.php'; ?>
 <!-- caja principal -->
 <div id="principal">
     <h1>Mis datos</h1>
@@ -18,7 +18,7 @@
 
     <?php endif  ?>
 
-    <form action="actualizar-usuario.php" method="post">
+    <form action="./acciones/actualizar-usuario.php" method="post">
         <label for="nombre">Nombre</label>
         <input type="text" name="nombre" id="nombre" value="<?=$_SESSION['usuario']['nombre']?>" >
         <?php echo isset($_SESSION['errores']) ? mostrarError($_SESSION['errores'], 'nombre') : ''; ?>
@@ -40,4 +40,4 @@
 
 </div>
 
-<?php require_once './includes/pie.php'   ?>
+<?php require_once __DIR__ . '/../includes/pie.php'; ?>

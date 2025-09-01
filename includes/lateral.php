@@ -12,7 +12,7 @@
             </div>
                 <?php endif ?>
 
-                <form action="buscar.php" method="post">
+                <form action="./vistas/buscar.php" method="post">
                     <input type="text" name="busqueda" id="">
                     <input type="submit" value="buscar">
                     
@@ -28,11 +28,11 @@
                 <h3>Bienvenido, <?=$_SESSION['usuario']['nombre'].' '.$_SESSION['usuario']['apellidos'] ?></h3>
                 <!-- botones -->
                 
-                <a href="crear-entradas.php" class="boton boton-naranja">crear entradas</a>
-                <a href="crear-categoria.php" class="boton">crear categorias</a>
-                <a href="crear-entradas.php" class="boton">crear entrada</a>
-                <a href="mis-datos.php" class="boton boton-naranja">mis datos</a>
-                <a href="cerrar.php" class="boton boton-rojo">cerrar sesion</a>
+                <a href="./vistas/crear-entradas.php" class="boton boton-naranja">crear entradas</a>
+                <a href="./vistas/crear-categoria.php" class="boton">crear categorias</a>
+                <a href="./vistas/crear-entradas.php" class="boton">crear entrada</a>
+                <a href="./vistas/mis-datos.php" class="boton boton-naranja">mis datos</a>
+                <a href="./acciones/cerrar.php" class="boton boton-rojo">cerrar sesion</a>
 
             </div>
             <?php endif ?>
@@ -47,7 +47,7 @@
             </div>
                 <?php endif ?>
 
-                <form action="login.php" method="post">
+                <form action="./acciones/login.php" method="post">
                     <label for="email">Email</label>
                     <input type="email" name="email" id="email">
                     <label for="password">contraseña</label>
@@ -74,7 +74,7 @@
                     
                     <?php endif  ?>
 
-                <form action="registro.php" method="post">
+                <form action="./acciones/registro.php" method="post">
                     <label for="nombre">Nombre</label>
                     <input type="text" name="nombre" id="nombre">
                     <?php echo isset($_SESSION['errores']) ? mostrarError($_SESSION['errores'], 'nombre') : ''; ?>

@@ -7,6 +7,6 @@ if ($_SESSION['usuario'] && isset($_GET['id'])) {
     $sql = "DELETE FROM entradas WHERE id = $entrada_id AND usuario_id = $usuario_id";
     $borrar = mysqli_query($db,$sql);
 }
-header('Location: index.php');
+header('Location: ./vistas/index.php');
 
 ?>

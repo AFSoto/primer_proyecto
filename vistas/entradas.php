@@ -1,6 +1,6 @@
-<?php require_once './includes/cabecera.php'   ?>
+<?php require_once __DIR__ . '/../includes/cabecera.php'; ?>
 
-    <?php require_once './includes/lateral.php'     ?>
+    <?php require_once __DIR__ . '/../includes/lateral.php'; ?>
     <!-- caja principal -->
 
     <div id="principal">
@@ -10,7 +10,7 @@
                 while ($entrada = mysqli_fetch_assoc($entradas)) :
                     ?>
                     <article class="entrada">
-            <a href="entrada.php?id=<?= $entrada['id'] ?>">
+            <a href="./vistas/entrada.php?id=<?= $entrada['id'] ?>">
                 <h2><?= $entrada['titulo'] ?></h2>
                 <span class="fecha"><?= $entrada['categoria'].' '.$entrada['fecha'] ?></span>
                 <p>
@@ -22,4 +22,4 @@
         
     </div>
 
-    <?php require_once './includes/pie.php'   ?>
+    <?php require_once __DIR__ . '/../includes/pie.php'; ?>

@@ -4,16 +4,13 @@ if (isset($_POST)) {
     
     //conexion a la base de datos
 require_once './includes/conexion.php';
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
 
-    //recoger los valores del formulario de registro
 
+    //recoger los valores del formulario de actualizacion
     $nombre = isset($_POST['nombre'])? mysqli_real_escape_string($db,$_POST['nombre']) : false;
     $apellidos = isset($_POST['apellidos'])? mysqli_real_escape_string($db,$_POST['apellidos']) : false;
     $email = isset($_POST['email'])? mysqli_real_escape_string($db,$_POST['email']) : false;
-    $password = isset($_POST['password'])? mysqli_real_escape_string($db,$_POST['password']) : false;
+    
 
     //array de errores
     $errores = [];
@@ -42,39 +39,43 @@ if (session_status() === PHP_SESSION_NONE) {
         $email_validado = false;
         $errores['email'] = "el email no es valido";
     }
-    
-    //validar campo password
-    if (!empty($password) ) {
-        $password_validado = true;
-    } else{
-        $password_validado = false;
-        $errores['password'] = "la password esta vacia";
-    }
 
     $guardar_usuario= false;
     if (count($errores)==0) {
         $guardar_usuario=true;
         $password_segura= password_hash($password,PASSWORD_BCRYPT,['cost'=>4]);
         
+        //comprobar si el email ya existe
+        $sql= "SELECT id,email FROM usuarios WHERE email='$email';";
+        $isset_email = mysqli_query($db,$sql);
+        $isset_user = mysqli_fetch_assoc($isset_email);
 
-        //insertamos usuario  en su tabla 
-        $sql= "INSERT INTO usuarios VALUES (NULL,'$nombre','$apellidos','$email','$password_segura',CURDATE())";
+        if ($isset_user['id'] == $_SESSION['usuario']['id'] || empty($isset_user)) {
+        //actualizar usuario  en su tabla 
+        $usuario = $_SESSION['usuario']['id'];
+        $sql= "UPDATE usuarios SET nombre='$nombre', apellidos='$apellidos', email='$email'".
+        "WHERE id= $usuario";
         $guardar = mysqli_query($db,$sql);
         
         
 
         if ($guardar) {
-            $_SESSION['completado'] = "el registro se ha completado con exito";
+            $_SESSION['usuario']['nombre'] = $nombre;
+            $_SESSION['usuario']['apellidos'] = $apellidos;
+            $_SESSION['usuario']['email'] = $email;
+            $_SESSION['completado'] = "tus datos  se han actualizado con exito";
         }else {
-            $_SESSION['errores']['general'] = "fallo al guardar el usuario";
+            $_SESSION['errores']['general'] = "fallo al actualizar tus datos";
         } 
 
-
+    }else {
+        $_SESSION['errores']['general'] = "el usuario ya existe";
+    }
 
     }else {
         $_SESSION['errores'] = $errores;
     }
     
 }
-header('location:index.php');
+header('Location: ./vistas/mis-datos.php');
 ?>

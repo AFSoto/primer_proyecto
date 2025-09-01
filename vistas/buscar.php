@@ -1,22 +1,22 @@
-<?php require_once './includes/cabecera.php'   ?>
-<?php $categoria_actual = conseguirCategoria($db,$_GET['id']);
-if (!isset($categoria_actual['id'])) {
-    header('Location: index.php');
+
+<?php 
+if (!isset($_POST['busqueda'])) {
+    header('Location: ./vistas/index.php');
 }
 ?>
-
-    <?php require_once './includes/lateral.php'     ?>
+    <?php require_once __DIR__ . '/../includes/cabecera.php'; ?>
+    <?php require_once __DIR__ . '/../includes/lateral.php'; ?>
     <!-- caja principal -->
 
     <div id="principal">
         
-        <h1>entradas de <?= $categoria_actual['nombre'] ?></h1>
-        <?php $entradas = conseguirEntradas($db,null,$_GET['id']);
+        <h1>Busqueda: <?= $_POST['busqueda'] ?></h1>
+        <?php $entradas = conseguirEntradas($db,NULL,NULL,$_POST['busqueda']);
             if (!empty($entradas) && mysqli_num_rows($entradas)>=1) :
                 while ($entrada = mysqli_fetch_assoc($entradas)) :
                     ?>
                     <article class="entrada">
-            <a href="entrada.php?id=<?= $entrada['id'] ?>">
+            <a href="./vistas/entrada.php?id=<?= $entrada['id'] ?>">
                 <h2><?= $entrada['titulo'] ?></h2>
                 <span class="fecha"><?= $entrada['categoria'].' '.$entrada['fecha'] ?></span>
                 <p>
@@ -31,5 +31,5 @@ if (!isset($categoria_actual['id'])) {
         
     </div>
 
-    <?php require_once './includes/pie.php'   ?>
+    <?php require_once __DIR__ . '/../includes/pie.php'; ?>
 
