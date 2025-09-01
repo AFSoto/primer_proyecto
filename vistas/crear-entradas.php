@@ -7,7 +7,7 @@
         <h1>crear entradas</h1>
         <p>añade nuevas entradas para que los usuarios puedan leelar y disfrutar de nuetro contenidos</p><br>
 
-    <form action="./acciones/guardar-entrada.php" method="post">
+    <form action="/PROYECTO_PHP/acciones/guardar-entrada.php" method="post">
             <label for="titulo">titulo</label>
             <input type="text" name="titulo" id="titulo">
             <?php echo isset($_SESSION['errores_entrada']) ? mostrarError($_SESSION['errores_entrada'], 'titulo') : ''; ?>

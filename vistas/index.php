@@ -10,7 +10,7 @@
                 while ($entrada = mysqli_fetch_assoc($entradas)) :
                     ?>
                     <article class="entrada">
-            <a href="./vistas/entrada.php?id=<?= $entrada['id'] ?>">
+            <a href="/PROYECTO_PHP/vistas/entrada.php?id=<?= $entrada['id'] ?>">
                 <h2><?= $entrada['titulo'] ?></h2>
                 <span class="fecha"><?= $entrada['categoria'].' '.$entrada['fecha'] ?></span>
                 <p>
@@ -22,7 +22,7 @@
         
 
         <div id="ver-todas">
-            <a href="./vistas/entradas.php">ver todas la entradas</a>
+            <a href="/PROYECTO_PHP/vistas/entradas.php">ver todas la entradas</a>
         </div>
     </div>
 

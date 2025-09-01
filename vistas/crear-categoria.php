@@ -7,7 +7,7 @@
         <h1>crear categorias</h1>
         <p>añade nuevas categorias para que los usuarios puedan crear nuevas entradas</p><br>
 
-    <form action="./acciones/guardar-categoria.php" method="post">
+    <form action="/PROYECTO_PHP/acciones/guardar-categoria.php" method="post">
             <label for="nombre">nombre de la categoria</label>
             <input type="text" name="nombre" id="nombre">
 

@@ -18,7 +18,7 @@
 
     <?php endif  ?>
 
-    <form action="./acciones/actualizar-usuario.php" method="post">
+    <form action="/PROYECTO_PHP/acciones/actualizar-usuario.php" method="post">
         <label for="nombre">Nombre</label>
         <input type="text" name="nombre" id="nombre" value="<?=$_SESSION['usuario']['nombre']?>" >
         <?php echo isset($_SESSION['errores']) ? mostrarError($_SESSION['errores'], 'nombre') : ''; ?>

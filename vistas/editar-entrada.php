@@ -16,7 +16,7 @@ if (!isset($entrada_actual['id'])) {
         <h1>editar entradas</h1>
         <p>edita tu entrada <?= $entrada_actual['titulo'] ?></p><br>
 
-    <form action="./acciones/guardar-entrada.php?editar=<?= $entrada_actual['id'] ?>" method="post">
+    <form action="/PROYECTO_PHP/acciones/guardar-entrada.php?editar=<?= $entrada_actual['id'] ?>" method="post">
             <label for="titulo">titulo</label>
             <input type="text" name="titulo" id="titulo" value="<?= $entrada_actual['titulo'] ?>">
             <?php echo isset($_SESSION['errores_entrada']) ? mostrarError($_SESSION['errores_entrada'], 'titulo') : ''; ?>
